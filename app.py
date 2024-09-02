@@ -2,8 +2,63 @@ import streamlit as st
 import pandas as pd
 from src.pipeline.predict_pipeline import PredictPipeline, CustomData
 
+# Custom CSS for styling
+custom_css = """
+<style>
+body {
+    background: rgba(0, 0, 0, 0.8) url("https://images.pexels.com/photos/730252/pexels-photo-730252.jpeg") no-repeat center center fixed;
+    background-size: cover;
+    color: #e0e0e0;
+}
+.main {
+    padding: 2rem;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+.stTextInput, .stNumberInput, .stSelectbox, .stSlider {
+    margin-bottom: 1rem;
+}
+.stButton > button {
+    margin-top: 1rem;
+}
+h1, h2 {
+    text-align: center;
+    color: #ffffff;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    border: 1px solid #ffffff;
+    text-align: left;
+    padding: 8px;
+}
+tr:nth-child(even) {
+    background-color: #333333;
+}
+tr:nth-child(odd) {
+    background-color: #444444;
+}
+th {
+    background-color: #555555;
+    color: #ffffff;
+}
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    color: #ffffff;
+    font-size: 0.9rem;
+}
+</style>
+"""
+
+# Apply the custom CSS to the Streamlit app
+st.markdown(custom_css, unsafe_allow_html=True)
+
 # Title of the Streamlit app
-st.title("Student Performance Prediction")
+st.title("Student Performance Predictor")
 
 # Sidebar for user input features
 st.sidebar.header("Input Features")
@@ -37,7 +92,7 @@ input_df = get_user_input()
 
 # Display user input features
 st.subheader("User Input Features")
-st.write(input_df)
+st.write(input_df.style.set_table_attributes('class="table"'))
 
 # Load prediction pipeline
 predict_pipeline = PredictPipeline()
@@ -48,4 +103,5 @@ if st.button("Predict"):
     st.subheader("Prediction")
     st.write(f"Predicted Math Score: {prediction[0]}")
 
-
+# Footer with author's name
+st.markdown("<footer>Created by Jai Dixit</footer>", unsafe_allow_html=True)
