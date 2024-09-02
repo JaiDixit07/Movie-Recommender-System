@@ -28,7 +28,7 @@ To run the application locally, follow these steps:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/yourrepository.git
+    git clone https://github.com/jaidixit07/Student-performance.git
     cd yourrepository
     ```
 
