@@ -30,8 +30,12 @@ def evaluate_models(X_train, y_train,X_test,y_test,models,param):
             model = list(models.values())[i]
             para=param[list(models.keys())[i]]
 
+            # Train model on all listed params
+
             gs = GridSearchCV(model,para,cv=3)
             gs.fit(X_train,y_train)
+
+            # Apply the best ones
 
             model.set_params(**gs.best_params_)
             model.fit(X_train,y_train)
@@ -60,3 +64,6 @@ def load_object(file_path):
 
     except Exception as e:
         raise CustomException(e, sys)
+    
+
+# Author - Jai Dixit

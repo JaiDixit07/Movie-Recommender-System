@@ -1,3 +1,5 @@
+# Install setuptools for package creation 
+
 from setuptools import find_packages,setup
 from typing import List
 
@@ -23,3 +25,5 @@ setup(
     packages=find_packages(),
     install_requires=get_requirements('requirements.txt')
 )
+
+# Author -- Jai Dixit
